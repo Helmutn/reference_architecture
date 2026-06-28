@@ -1,15 +1,8 @@
-from tkinter import ttk
+from ui.widgets.primary_widgets import PrimaryFrame
 
 
-class BaseTab(ttk.Frame):
-
-    def __init__(
-        self,
-        parent,
-        controller,
-        event_bus
-    ):
-
+class BaseTab(PrimaryFrame):
+    def __init__(self, parent, controller, event_bus):
         super().__init__(parent)
 
         self.controller = controller

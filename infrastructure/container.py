@@ -1,4 +1,5 @@
 from models.device_model import DeviceModel
+from models.data_model import DataModel
 
 from services.device_service import DeviceService
 from services.monitoring_service import MonitoringService
@@ -16,19 +17,15 @@ class Container:
 
         self.event_bus = EventBus()
 
-        self.model = DeviceModel()
+        self.model = DataModel()
 
         self.thread_manager = ThreadManager()
 
         self.device_service = DeviceService()
 
-        self.logging_service = LoggingService(
-            self.event_bus
-        )
+        self.logging_service = LoggingService(self.event_bus)
 
-        self.monitoring_service = MonitoringService(
-            self.event_bus
-        )
+        self.monitoring_service = MonitoringService(self.event_bus)
 
         self.controller = MainController(
             self.model,

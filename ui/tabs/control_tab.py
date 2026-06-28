@@ -1,23 +1,9 @@
-from tkinter import ttk
+from ui.widgets.primary_widgets import PrimaryLabel
 from ui.tabs.base_tab import BaseTab
 
 
 class ControlTab(BaseTab):
+    def __init__(self, parent, controller, event_bus):
+        super().__init__(parent, controller, event_bus)
 
-    def __init__(
-        self,
-        parent,
-        controller,
-        event_bus
-    ):
-
-        super().__init__(
-            parent,
-            controller,
-            event_bus
-        )
-
-        ttk.Label(
-            self,
-            text="Gerätesteuerung"
-        ).pack(pady=20)
+        PrimaryLabel(self, text="Gerätesteuerung").pack(pady=20)
