@@ -1,7 +1,7 @@
-from models.device_model import DeviceModel
+# from models.device_model import DeviceModel
 from models.data_model import DataModel
 
-from services.device_service import DeviceService
+from services.data_service import DataService
 from services.monitoring_service import MonitoringService
 from services.logging_service import LoggingService
 
@@ -13,23 +13,18 @@ from infrastructure.thread_manager import ThreadManager
 
 class Container:
 
-    def __init__(self):
+    def __init__(self, model_address):
 
         self.event_bus = EventBus()
 
-        self.model = DataModel()
+        self.model = DataModel(model_address)
 
         self.thread_manager = ThreadManager()
 
-        self.device_service = DeviceService()
+        self.data_service = DataService(self.model)
 
         self.logging_service = LoggingService(self.event_bus)
 
         self.monitoring_service = MonitoringService(self.event_bus)
 
-        self.controller = MainController(
-            self.model,
-            self.device_service,
-            self.monitoring_service,
-            self.logging_service
-        )
+        self.controller = MainController(self.model, self.data_service, self.event_bus)

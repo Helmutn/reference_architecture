@@ -22,12 +22,20 @@ class PrimaryButton(ttk.Button):
             **kwargs
         )
 
-
 class PrimaryCombobox(ttk.Combobox):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(
             parent,
             style="Primary.TCombobox",
+            *args,
+            **kwargs
+        )
+
+class PrimaryCheckbutton(ttk.Checkbutton):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(
+            parent,
+            style="Primary.TCheckbutton",
             *args,
             **kwargs
         )
@@ -40,7 +48,6 @@ class PrimaryEntry(ttk.Entry):
             **kwargs
         )
 
-
 class PrimaryFrame(ttk.Frame):
     def __init__(self, parent, **kwargs):
         super().__init__(
@@ -49,6 +56,13 @@ class PrimaryFrame(ttk.Frame):
             **kwargs
         )
 
+class PrimaryLabelFrame(ttk.LabelFrame):
+    def __init__(self, parent, **kwargs):
+        super().__init__(
+            parent,
+            style="Primary.TLabelframe",
+            **kwargs
+        )
 
 class PrimaryLabel(ttk.Label):
     def __init__(self, parent, **kwargs):
@@ -57,7 +71,6 @@ class PrimaryLabel(ttk.Label):
             style="Primary.TLabel",
             **kwargs
         )
-
 
 class PrimaryTreeview(ttk.Treeview):
     def __init__(self, parent, **kwargs):
@@ -74,3 +87,7 @@ class PrimaryNotebook(ttk.Notebook):
             style="Primary.TNotebook",
             **kwargs
         )
+
+    def add(self, child, **kwargs):
+        super().add(child, **kwargs)
+        self.tab(child, state="disabled")

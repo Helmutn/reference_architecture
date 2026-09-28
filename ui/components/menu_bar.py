@@ -11,8 +11,11 @@ class BaseMenu(Menu):
 
 
 class MenuBar(BaseMenu):
-    def __init__(self):
+    def __init__(self, callback:dict):
         super().__init__()
+
+        self.callback = callback
+
         self.menu_file = BaseMenu()
         self.menu_edit = BaseMenu()
         self.menu_tools = BaseMenu()
@@ -24,3 +27,6 @@ class MenuBar(BaseMenu):
         self.add_menu("Tools", menu=self.menu_tools)
         self.add_menu("Test", menu=self.menu_test)
         self.add_menu("Help", menu=self.menu_help)
+
+        self.menu_edit.add_cascade(label="Clear logger",
+                                   command=self.callback.get("clear_logger"))

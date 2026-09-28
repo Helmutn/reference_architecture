@@ -25,9 +25,10 @@ class FooterStatus(PrimaryFrame):
       - Errors: green(0), red(>0)
     """
 
-    def __init__(self, parent, *, padding=(8, 2, 8, 2)):
+    def __init__(self, parent, event_bus, *, padding=(8, 2, 8, 2)):
         super().__init__(parent, height=40)
         self._err_count = 0
+        self.event_bus = event_bus
 
         # Top hairline to detach from Treeview
         ttk.Separator(self, orient="horizontal").grid(row=0, column=0, columnspan=10, sticky="ew")

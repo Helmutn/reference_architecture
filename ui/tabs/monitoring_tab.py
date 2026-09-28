@@ -4,7 +4,7 @@ from ui.tabs.base_tab import BaseTab
 
 class MonitoringTab(BaseTab):
     def __init__(self, parent, controller, event_bus):
-        super().__init__(parent, controller, event_bus)
+        super().__init__(parent, event_bus)
 
         self.label = PrimaryLabel(self, text="UNBEKANNT")
         self.label.pack(pady=20)

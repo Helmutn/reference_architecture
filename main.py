@@ -10,21 +10,15 @@ from ui.main_window import MainWindow
 def main():
 
     # root = tk.Tk()
-    root = tb.Window(themename="pulse")
-
-    root.title("Device Controller")
-
+    root = tb.Window(themename="morph")
+    root.title("My Application")
     root.geometry("900x700")
 
-    apply_theme()
+    # apply_theme()
 
-    container = Container()
+    container = Container("")
 
-    MainWindow(
-        root,
-        container.controller,
-        container.event_bus
-    )
+    MainWindow(root, container.controller, container.event_bus)
 
     container.thread_manager.start(container.monitoring_service.start)
 
